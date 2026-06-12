@@ -1,0 +1,81 @@
+/* ============================================
+   AUTO CUSTOMS LOVE PROJECT — Global Styles
+   Pastel romantic palette
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
+
+/* CSS Variables */
+:root {
+  --pink: #FFD6E0;
+  --lilac: #E8D5F5;
+  --peach: #FFE8D6;
+  --cream: #FFF5F0;
+  --blush: #FFB3C6;
+  --plum: #6B3D5E;
+  --mauve: #9B6B85;
+  --rose: #C9849A;
+  --sage: #7bc97b;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: linear-gradient(
+    135deg,
+    #FFF0F5 0%,
+    #F7EEFF 30%,
+    #FFF0E8 65%,
+    #FFF5F0 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--plum);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 214, 224, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 132, 154, 0.4);
+  border-radius: 3px;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(201, 132, 154, 0.25);
+  color: var(--plum);
+}
