@@ -48,17 +48,18 @@ export default function HomePage({ onOpenPuzzle }: Props) {
 
       <div className="home__inner">
         <header className="home__header">
-          <p className="home__eyebrow">para você 💌</p>
-          <h1 className="home__title">Nossa História</h1>
+          <p className="home__eyebrow">para você meu amor💌</p>
+          <h1 className="home__title">Nossos lugares</h1>
           <p className="home__subtitle">
             Cada lugar guarda um pedaço do nosso caminho juntos.<br />
-            Complete os quebra-cabeças e descubra o segredo.
           </p>
         </header>
 
         <div className="home__hint">
           <span>🔑</span>
+          
           <p>Complete os quebra-cabeças e descubra a letra secreta de cada lugar</p>
+          <p>Vai ter que pensar Sim!</p>
         </div>
 
         <div className="home__grid">

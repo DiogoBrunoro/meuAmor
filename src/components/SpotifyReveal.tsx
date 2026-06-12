@@ -22,8 +22,8 @@ export default function SpotifyReveal({ link }: Props) {
       </div>
 
       <div className="spotify-reveal__content">
-        <p className="spotify-reveal__title">🎵 Criei uma playlist só para você</p>
-        <p className="spotify-reveal__subtitle">Cada música é um pedacinho do que eu sinto ❤️</p>
+        <p className="spotify-reveal__title">🎵 Estava te devendo ela meu amor</p>
+        <p className="spotify-reveal__subtitle">Feite especialmente para você meu bem, com muito carinho ❤️</p>
         <a
           href={link}
           target="_blank"

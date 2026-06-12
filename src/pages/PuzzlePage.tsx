@@ -91,8 +91,6 @@ export default function PuzzlePage({ place, onBack }: Props) {
     setShowPreview(false)
   }
 
-  const PIECE_PERCENT = 100 / GRID_SIZE
-
   return (
     <div className="puzzle-page">
       <div className="puzzle-page__inner">
@@ -155,24 +153,47 @@ export default function PuzzlePage({ place, onBack }: Props) {
                 const col = pieceId % GRID_SIZE
                 const isCorrect = pieceId === pos
 
+                // A célula tem tamanho = containerSize / GRID_SIZE.
+                // A imagem ocupa GRID_SIZE células = 100% do container.
+                // Para mostrar a fatia (col, row), deslocamos a imagem
+                // negativamente em múltiplos do tamanho da célula (= 100% / GRID_SIZE do container).
+                // Usando calc: translateX = -col * (100vmin * containerRatio / GRID_SIZE)
+                // Mais simples: posicionamos a imagem com top/left negativos em % da célula-pai.
+                // left = -(col * 100%) e top = -(row * 100%) onde 100% = tamanho da célula.
+                // Como a imagem = GRID_SIZE * célula em cada dimensão,
+                // e o translate % é relativo À IMAGEM (não à célula),
+                // usamos: left/top absolutos negativos = col * cellSize.
+                // Implementação: position absolute na img, left/top via calc com --cell-size.
                 return (
                   <div
                     key={pieceId}
                     className={`puzzle-cell ${isCorrect ? 'puzzle-cell--correct' : ''}`}
                     onClick={() => handlePieceClick(pos)}
-                    style={
-                      imgError
-                        ? {}
-                        : {
-                            backgroundImage: `url(${place.imagePath})`,
-                            backgroundSize: `${GRID_SIZE * 100}%`,
-                            backgroundPosition: `${col * PIECE_PERCENT * (GRID_SIZE / (GRID_SIZE - 1))}% ${row * PIECE_PERCENT * (GRID_SIZE / (GRID_SIZE - 1))}%`,
-                          }
-                    }
+                    style={{ position: 'relative' }}
                   >
-                    {imgError && (
-                      <span className="puzzle-cell__number">{pieceId + 1}</span>
-                    )}
+                    {imgError
+                      ? <span className="puzzle-cell__number">{pieceId + 1}</span>
+                      : (
+                        <img
+                          src={place.imagePath}
+                          alt=""
+                          draggable={false}
+                          onError={() => setImgError(true)}
+                          style={{
+                            position: 'absolute',
+                            // A imagem é GRID_SIZE vezes o tamanho da célula
+                            width: `${GRID_SIZE * 100}%`,
+                            height: `${GRID_SIZE * 100}%`,
+                            objectFit: 'cover',
+                            // Desloca para mostrar exatamente a fatia (col, row)
+                            // 100% aqui = tamanho da célula (elemento pai)
+                            left: `${-(col * 100)}%`,
+                            top: `${-(row * 100)}%`,
+                            pointerEvents: 'none',
+                          }}
+                        />
+                      )
+                    }
                   </div>
                 )
               })}
