@@ -23,7 +23,7 @@ export default function SpotifyReveal({ link }: Props) {
 
       <div className="spotify-reveal__content">
         <p className="spotify-reveal__title">🎵 Estava te devendo ela meu amor</p>
-        <p className="spotify-reveal__subtitle">Feite especialmente para você meu bem, com muito carinho ❤️</p>
+        <p className="spotify-reveal__subtitle">Feite especialmente para você meu bem, com muito carinho TE AMOOO DEMMAIISS❤️</p>
         <a
           href={link}
           target="_blank"
